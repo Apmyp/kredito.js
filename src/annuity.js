@@ -14,8 +14,8 @@ Annuity.prototype.bodyInPayment = function (period) {
   return toFixed(this._bodyInPayment(period))
 }
 
-Annuity.prototype._factor = function (interestRate, instalments) {
-  return interestRate + (interestRate / (Math.pow(1 + interestRate, instalments) - 1))
+Annuity.prototype._factor = function () {
+  return this.interestRate + (this.interestRate / (Math.pow(1 + this.interestRate, this.instalments) - 1))
 }
 
 Annuity.prototype._payment = function () {
