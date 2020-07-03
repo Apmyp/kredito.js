@@ -1,0 +1,44 @@
+{
+  "name": "kredito.js",
+  "version": "1.0.0",
+  "description": "A tiny loan functions",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "jest-ci --coverage && eslint-ci ."
+  },
+  "engines": {
+    "node": "^10 || ^12 || >=13.7"
+  },
+  "author": "Arthur Bordenyuk <me@apmyp.pro>",
+  "license": "MIT",
+  "repository": "apmyp/kredito.js",
+  "sideEffects": false,
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "eslint-ci": "^1.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.17.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.1.0",
+    "jest-ci": "^0.1.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "plugins": ["jest"],
+    "env": {
+      "jest/globals": true
+    }
+  }
+}
