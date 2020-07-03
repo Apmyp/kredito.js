@@ -11,7 +11,7 @@ A tiny (~112 bytes) and fast module to calculate loan for JavaScript.
 First, you install it:
 
 ```bash
-$ npm i kredito.js
+$ npm i @apmyp/kredito.js
 ```
 
 Then, you just use it like this for annuity payment type:
