@@ -49,6 +49,7 @@
     }
   },
   "eslintIgnore": [
+    "/index.js",
     "dual-publish-tmp"
   ],
   "size-limit": [
