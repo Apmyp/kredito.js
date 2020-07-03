@@ -1,4 +1,4 @@
-const { toFixed } = require('./utils')
+const { toFixed } = require('../utils')
 
 function Annuity (principal, interestRate, instalments) {
   this.principal = principal

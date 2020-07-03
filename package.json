@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "A tiny loan functions",
   "keywords": [],
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest-ci --coverage && eslint-ci ."
+    "test": "jest-ci --coverage && eslint-ci . && size-limit",
+    "build": "ncc build src/index.js -m -o dist && cp src/index.d.ts dist/index.d.ts"
   },
   "engines": {
     "node": "^10 || ^12 || >=13.7"
@@ -15,6 +17,10 @@
   "repository": "apmyp/kredito.js",
   "sideEffects": false,
   "devDependencies": {
+    "@size-limit/dual-publish": "^4.5.3",
+    "@size-limit/preset-small-lib": "^4.5.3",
+    "@zeit/ncc": "^0.22.3",
+    "dual-publish": "^0.11.0",
     "eslint": "^7.3.1",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
@@ -24,7 +30,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.1.0",
-    "jest-ci": "^0.1.1"
+    "jest-ci": "^0.1.1",
+    "size-limit": "^4.5.3"
   },
   "jest": {
     "testEnvironment": "node",
@@ -42,5 +49,21 @@
     "env": {
       "jest/globals": true
     }
-  }
+  },
+  "eslintIgnore": [
+    "dist",
+    "dual-publish-tmp"
+  ],
+  "size-limit": [
+    {
+      "name": "Annuity",
+      "import": "{ Annuity }",
+      "limit": "28 B"
+    },
+    {
+      "name": "Linear",
+      "import": "{ Linear }",
+      "limit": "26 B"
+    }
+  ]
 }
