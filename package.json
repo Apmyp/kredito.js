@@ -9,9 +9,7 @@
     "test": "jest-ci --coverage && eslint-ci . && size-limit",
     "build": "ncc build src/index.js -m -o . && cp src/index.d.ts index.d.ts"
   },
-  "engines": {
-    "node": "^10 || ^12 || >=13.7"
-  },
+  "engines": { "node": "^10 || ^12 || >=13.7" },
   "author": "Arthur Bordenyuk <me@apmyp.pro>",
   "license": "MIT",
   "repository": "apmyp/kredito.js",
@@ -56,14 +54,8 @@
   ],
   "size-limit": [
     {
-      "name": "Annuity",
-      "import": "{ Annuity }",
-      "limit": "28 B"
-    },
-    {
-      "name": "Linear",
-      "import": "{ Linear }",
-      "limit": "26 B"
+      "path": "index.js",
+      "limit": "112B"
     }
   ]
 }
