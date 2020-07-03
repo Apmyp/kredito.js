@@ -2,7 +2,7 @@
 
 <img src="/logo.svg" align="right" alt="kredito.js logo" width="195" height="64">
 
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/apmyp/takes/kredito.js/master/LICENSE.txt)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://en.wikipedia.org/wiki/MIT_License)
 
 A tiny (~58B) and fast module to calculate loan for JavaScript.
 
