@@ -21,8 +21,8 @@ import { Annuity } from "@apmyp/kredito.js";
 
 const principal = 100000;
 const interestRate = 0.12 / 12; // 12% per year we should convert to 1% per month
-const instalments = 24;
-const annuity = new Annuity(principal, interestRate, instalments);
+const installments = 24;
+const annuity = new Annuity(principal, interestRate, installments);
 
 annuity.payment(); //=> 4707.35
 annuity.percentageInPayment(1); //=> 1000
@@ -38,12 +38,18 @@ import { Linear } from "@apmyp/kredito.js";
 
 const principal = 100000;
 const interestRate = 0.12 / 12; // 12% per year we should convert to 1% per month
-const instalments = 24;
-const linear = new Linear(principal, interestRate, instalments);
+const installments = 24;
+const linear = new Linear(principal, interestRate, installments);
 
 linear.payment(1); //=> 5166.67
 linear.percentageInPayment(1); //=> 1000
 linear.bodyInPayment(); //=> 4166.67
 linear.totalCost(); //=> 112500
 linear.overpayment(); //=> 12500
+```
+
+If you want to use CommonJS modules:
+
+```javascript
+const { Annuity, Linear } = require('@apmyp/kredito.js');
 ```

@@ -2,8 +2,8 @@ const { Linear } = require('../linear')
 
 const principal = 100000
 const interestRate = 0.12 / 12
-const instalments = 24
-const linear = new Linear(principal, interestRate, instalments)
+const installments = 24
+const linear = new Linear(principal, interestRate, installments)
 
 describe('Linear payment', () => {
   it('calculates monthly payment', () => {

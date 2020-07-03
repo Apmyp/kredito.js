@@ -1,9 +1,9 @@
 const { toFixed } = require('../utils')
 
-function Annuity (principal, interestRate, instalments) {
+function Annuity (principal, interestRate, installments) {
   this.principal = principal
   this.interestRate = interestRate
-  this.instalments = instalments
+  this.installments = installments
 }
 
 Annuity.prototype._bodyInPayment = function (period) {
@@ -15,11 +15,11 @@ Annuity.prototype.bodyInPayment = function (period) {
 }
 
 Annuity.prototype._factor = function () {
-  return this.interestRate + (this.interestRate / (Math.pow(1 + this.interestRate, this.instalments) - 1))
+  return this.interestRate + (this.interestRate / (Math.pow(1 + this.interestRate, this.installments) - 1))
 }
 
 Annuity.prototype._payment = function () {
-  return this.principal * this._factor(this.interestRate, this.instalments)
+  return this.principal * this._factor(this.interestRate, this.installments)
 }
 
 Annuity.prototype.payment = function () {
@@ -27,7 +27,7 @@ Annuity.prototype.payment = function () {
 }
 
 Annuity.prototype._totalCost = function () {
-  return this._payment() * this.instalments
+  return this._payment() * this.installments
 }
 
 Annuity.prototype.totalCost = function () {
@@ -35,7 +35,7 @@ Annuity.prototype.totalCost = function () {
 }
 
 Annuity.prototype._overpayment = function () {
-  return this._totalCost(this.instalments, this._payment()) - this.principal
+  return this._totalCost(this.installments, this._payment()) - this.principal
 }
 
 Annuity.prototype.overpayment = function () {

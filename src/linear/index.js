@@ -1,13 +1,13 @@
 const { toFixed } = require('../utils')
 
-function Linear (principal, interestRate, instalments) {
+function Linear (principal, interestRate, installments) {
   this.principal = principal
   this.interestRate = interestRate
-  this.instalments = instalments
+  this.installments = installments
 }
 
 Linear.prototype._bodyInPayment = function () {
-  return this.principal / this.instalments
+  return this.principal / this.installments
 }
 
 Linear.prototype.bodyInPayment = function () {
@@ -31,7 +31,7 @@ Linear.prototype._sumPayments = function (sum, payment) {
 }
 
 Linear.prototype._totalCost = function () {
-  return ((Array.apply(null, Array(this.instalments)))
+  return ((Array.apply(null, Array(this.installments)))
     .map(this._calculateLinearPayment.bind(this))
     .reduce(this._sumPayments))
 }

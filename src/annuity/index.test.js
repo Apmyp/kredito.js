@@ -2,8 +2,8 @@ const { Annuity } = require('../annuity')
 
 const principal = 100000
 const interestRate = 0.12 / 12
-const instalments = 24
-const annuity = new Annuity(principal, interestRate, instalments)
+const installments = 24
+const annuity = new Annuity(principal, interestRate, installments)
 
 describe('Annuity payment', () => {
   it('calculates monthly payment', () => {
