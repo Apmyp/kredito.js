@@ -6,9 +6,8 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "jest-ci --coverage && eslint-ci .",
-    "size": "size-limit",
-    "build": "ncc build src/index.js -m -o . && cp src/index.d.ts index.d.ts"
+    "test": "jest-ci --coverage && eslint-ci . && yarn build && size-limit",
+    "build": "ncc build src/index.js -m -o ."
   },
   "engines": { "node": "^10 || ^12 || >=13.7" },
   "author": "Arthur Bordenyuk <me@apmyp.pro>",
@@ -50,7 +49,6 @@
     }
   },
   "eslintIgnore": [
-    "dist",
     "dual-publish-tmp"
   ],
   "size-limit": [
