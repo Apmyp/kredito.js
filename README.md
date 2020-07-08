@@ -8,6 +8,8 @@
 
 A tiny (~498 bytes) and fast module to calculate loan for JavaScript. May be used in both CommonJS and ES module systems.
 
+Check out [https://apmyp.pro/kredito.js/](live demo).
+
 First, you install it:
 
 ```bash
