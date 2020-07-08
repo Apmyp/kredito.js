@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Kredito.js - javascript library to calculate a loan</title>
+    <meta name=description content="A tiny (~498 bytes) and fast module to calculate loan for JavaScript. May be used in both CommonJS and ES module systems">
+    <meta name=keywords content="money,loan,credit,calculator,loan-calculator,installments,interest,github,kredito.js">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: Roboto, system-ui, sans-serif;
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .links {
+        margin-bottom: 48px;
+      }
+
+      .main-container {
+        width: 1200px;
+        margin: 0 auto;
+      }
+
+      .form {
+        margin-bottom: 24px;
+      }
+
+      .form form {
+        display: flex;
+      }
+
+      .form-group {
+        margin-right: 16px;
+      }
+
+      .form-group label,
+      .form-group input {
+        display: block;
+      }
+
+      .form-group label {
+        margin-bottom: 6px;
+      }
+
+      .form-group input,
+      .form-group select {
+        font-family: inherit;
+        font-size: inherit;
+
+        background-color: transparent;
+        border: 1px solid #cacaca;
+        border-radius: 3px;
+        padding: 8px 12px;
+      }
+
+      .demo textarea {
+        width: 700px;
+        padding: 12px 16px;
+        border-radius: 3px;
+        border: 1px solid #cacaca;
+        background-color: #fff;
+      }
+
+      .table-wrapper {
+        margin-top: 24px;
+      }
+
+      .table {
+        width: 100%;
+        font-family: monospace;
+      }
+
+      .table th,
+      .table td {
+        text-align: left;
+      }
+
+      .table tfoot td {
+        padding-top: 16px;
+      }
+
+      table th.payment-number {
+        width: 1%;
+        white-space: nowrap;
+      }
+
+      table th.number,
+      table td.number {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="main-container">
+        <h1>Kredito.js</h1>
+        <div class="links">
+          <a href="https://github.com/apmyp/kredito.js">Back to Github</a>
+          <span>·</span>
+          <a href="https://apmyp.pro">Author's blog</a>
+        </div>
+
+        <div class="demo-wrapper">
+          <div class="form">
+            <form>
+              <div class="form-group">
+                <label for="loan_principal">Loan principal</label>
+                <input id="loan_principal" value="10000" size="8" v-model="principal">
+              </div>
+              <div class="form-group">
+                <label for="interest_rate">Interest rate</label>
+                <input id="interest_rate" value="0.12" size="4" v-model="interestRate">
+              </div>
+              <div class="form-group">
+                <label for="installments">Installment count</label>
+                <input id="installments" value="24" size="3" v-model="installments">
+              </div>
+              <div class="form-group">
+                <label for="payment_type">Payment type</label>
+                <select id="payment_type" v-model="type">
+                  <option selected>Annuity</option>
+                  <option>Linear</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="demo">
+            <textarea rows="7">{{ code }}</textarea>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="payment-number">Payment #</th>
+                <th class="number">Amount</th>
+                <th class="number">Payment body</th>
+                <th class="number">Payment percentage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="period in installmentsRange" :key="period">
+                <td>{{ period }}</td>
+                <td class="number">{{ kredito.payment(period).toFixed(2) }}</td>
+                <td class="number">{{ kredito.bodyInPayment(period).toFixed(2) }}</td>
+                <td class="number">{{ kredito.percentageInPayment(period).toFixed(2) }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td></td>
+                <td class="number">{{ kredito.totalCost().toFixed(2) }}</td>
+                <td class="number">{{ kredito.principal }}</td>
+                <td class="number">{{ kredito.overpayment().toFixed(2) }}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="module">
+      import { Linear, Annuity } from "https://cdn.jsdelivr.net/npm/@apmyp/kredito.js@1.0.5/index.js";
+
+      new Vue({
+        el: '#app',
+        data: {
+          principal: 100000,
+          interestRate: 0.12,
+          installments: 24,
+          type: 'Annuity',
+        },
+        computed: {
+          kredito: function() {
+            const classConst = this.type === 'Annuity' ? Annuity : Linear;
+
+            return new classConst(Number(this.principal), Number(this.interestRate) / 12, Number(this.installments));
+          },
+          installmentsRange: function() {
+            return Array.apply(null, Array(Number(this.installments))).map((_, i) => i+1);
+          },
+          code: function() {
+            const tpl = `import { ${this.type} } from "@apmyp/kredito.js";
+
+const principal = ${this.principal};
+const interestRate = ${this.interestRate} / 12;
+const installments = ${this.installments};
+const ${this.type.toLowerCase()} = new ${this.type}(principal, interestRate, installments);
+            `;
+            return tpl;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+
