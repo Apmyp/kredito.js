@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/Apmyp/kredito.js.svg?branch=master)](https://travis-ci.org/Apmyp/kredito.js)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://en.wikipedia.org/wiki/MIT_License)
 
-A tiny (~112 bytes) and fast module to calculate loan for JavaScript.
+A tiny (~498 bytes) and fast module to calculate loan for JavaScript. May be used in both CommonJS and ES module systems.
 
 First, you install it:
 

@@ -3,7 +3,6 @@ yarn.lock
 .cache
 .gitpod.yml
 
-src/
 coverage/
 img/
 dual-publish-tmp/

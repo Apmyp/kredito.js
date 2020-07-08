@@ -1,13 +1,12 @@
 {
   "name": "@apmyp/kredito.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A tiny loan functions",
   "keywords": ["money", "loan", "credit", "calculator", "loan-calculator", "installments", "interest"],
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
-    "test": "jest-ci --coverage && eslint-ci . && yarn build && size-limit",
-    "build": "ncc build src/index.js -m -o ."
+    "test": "jest-ci --coverage && eslint-ci . && size-limit"
   },
   "engines": { "node": "^10 || ^12 || >=13.7" },
   "author": "Arthur Bordenyuk <me@apmyp.pro>",
@@ -17,7 +16,6 @@
   "devDependencies": {
     "@size-limit/dual-publish": "^4.5.3",
     "@size-limit/preset-small-lib": "^4.5.3",
-    "@zeit/ncc": "^0.22.3",
     "dual-publish": "^0.11.0",
     "eslint": "^7.3.1",
     "eslint-ci": "^1.0.0",
@@ -54,8 +52,8 @@
   ],
   "size-limit": [
     {
-      "path": "index.js",
-      "limit": "112B"
+      "path": "src/index.js",
+      "limit": "498B"
     }
   ]
 }
