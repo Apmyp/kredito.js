@@ -4,6 +4,3 @@ yarn-error.log
 coverage/
 .cache
 dual-publish-tmp/
-
-/index.js
-!/*/index.js
