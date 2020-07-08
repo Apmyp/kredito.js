@@ -1,10 +1,10 @@
 {
   "name": "@apmyp/kredito.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A tiny loan functions",
   "keywords": ["money", "loan", "credit", "calculator", "loan-calculator", "installments", "interest"],
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "jest-ci --coverage && eslint-ci . && size-limit"
   },
@@ -47,12 +47,11 @@
     }
   },
   "eslintIgnore": [
-    "/index.js",
     "dual-publish-tmp"
   ],
   "size-limit": [
     {
-      "path": "src/index.js",
+      "path": "index.js",
       "limit": "498B"
     }
   ]
